@@ -85,3 +85,61 @@ puts 'Hello, #{name}' #=> "Hello, #{name}"
 
 
 
+
+symbol
+
+
+
+:symbol.to_s  #=> "symbol"
+# Examples of symbols
+:name
+:a_symbol
+:"surprisingly, this is also a symbol"
+# Strings can be changed, so every time a string is used, Ruby has to store it in memory even if an existing string with the same value already exists. Symbols, on the other hand, are stored in memory only once, making them faster in certain situations.
+# Symbols are like constants?
+# One common application where symbols are preferred over strings are the keys in hashes. Sites = { Crypto: "http:/coinmarketcap.com" } here Crypto is the key
+# Symbols vs. Strings
+# To get a better idea of how symbols are stored in memory, give this a whirl in irb or a REPL. The #object_id method returns an integer identifier for an object. (And remember: in Ruby, everything is an object!)
+"string" == "string";  #=> true
+
+
+
+
+
+object_id 
+
+
+"string".object_id == "string".object_id; #=> false
+:symbol.object_id == :symbol.object_id    #=> true
+object_id → integer
+The same number will be returned on all calls to object_id for a given object, and no two active objects will share an id.
+Object.new.object_id  == Object.new.object_id  # => false
+(21 * 2).object_id    == (21 * 2).object_id    # => true
+"hello".object_id     == "hello".object_id     # => false
+"hi".freeze.object_id == "hi".freeze.object_id # => true
+
+
+
+
+
+nil
+
+nil.to_s      #=> ""
+In Ruby, nil represents “nothing”. Everything in Ruby has a return value. When a piece of code doesn’t have anything to return, it will return nil
+
+In programming, we need a way to express "nothing", and in Ruby, we do this through something called nil. A variable with a value of nil could be described as having 'nothing' or being 'completely empty', or even just simply 'not any specific type'. A situation where this may occur is where output is expected but none is returned, such as:
+irb :001 > puts "Hello, World!"
+Hello, World!
+=> nil
+The puts method prints out a string and returns nothing, so we see nil being returned after the string is displayed.
+
+irb :001 > "Hello, World".nil?
+=> false
+if nil   #false
+end
+
+if 1 # true, 'cause 1 is something
+end
+
+
+
