@@ -404,3 +404,19 @@ Much more readable!
 
 # We can make ranges of letters, too!
 ('a'..'d')  # a, b, c, d
+
+
+
+the FOR LOOP 
+
+
+For Loop
+for i in 0..5
+  puts "#{i} zombies incoming!"
+end
+
+A for loop is used to iterate through a collection of information such as an array or range. 
+
+
+
+
