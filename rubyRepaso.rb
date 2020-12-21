@@ -333,3 +333,49 @@ loop do
    break
  end
 end
+
+
+
+
+You won’t see this loop used much in Ruby. If you find yourself using loop, know that there is probably a better loop for you out there, like one of the more specific loops below.
+
+
+the WHILE LOOP
+
+i = 0
+while i < 10 do
+puts "i is #{i}"
+i += 1
+end
+
+Because you declare the condition that breaks the loop up front, the intention of your code is much clearer, making this code easier to read than our loop loop above.
+
+while gets.chomp != "yes" do
+  puts "Will you go to prom with me?"
+end
+
+This example shows the flexibility advantage of a while loop: it will run until its break condition is met, which could be for a variable number of loops or a number of loops that is initially unknown. 
+
+
+
+x = 0
+
+while x <= 10
+  if x.odd?
+    puts x
+  end
+  x += 1
+end
+
+x = 0
+
+while x <= 10
+  if x == 7
+    break
+  elsif x.odd?
+    puts x
+  end
+  x += 1
+end
+
+
