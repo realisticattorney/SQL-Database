@@ -230,3 +230,62 @@ var = 'I must be passed around to cross scope boundaries.'
 
 
 
+
+
+
+
+desired_location = "Barcelona"
+johns_location = desired_location
+
+desired_location  #=> "Barcelona"
+johns_location    #=> "Barcelona"
+
+
+johns_location.upcase!  #=> "BARCELONA"
+
+desired_location        #=> "BARCELONA" #BECAUSE   johns_location.upcase! CALLS desired_location and makes it upcase
+johns_location          #=> "BARCELONA" 
+
+
+
+irb :001 > a = 4
+=> 4
+irb :002 > b = a
+=> 4
+irb :003 > a = 7
+=> 7
+What is the value of b at this point? Take your best guess and then type this session into irb to find out.
+
+You'll notice that the value of b remains 4, while a was re-assigned to 7. This shows that variables point to values in memory, and are not deeply linked to each other.
+# BECAUSE MEMORY USES A DIFFERENT ID FOR EACH CALLING
+
+irb :001 > first_name = 'Joe'
+=> "Joe"  # it will always return a value
+
+
+
+
+print vs puts
+'
+irb(main):001:0> print "Learning to code is FUN!"
+Learning to code is FUN!=> nil
+
+irb(main):002:0> print "1234"
+1234=> nil
+
+
+puts
+
+irb(main):002:0> puts "Hey, I want 2 key lime pies."
+Hey, I want 2 key lime pies.
+=> nil
+
+irb(main):003:0> x = "My name is ALEX! :)"
+=> "My name is ALEX! :)"
+
+irb(main):004:0> puts x
+My name is ALEX! :)
+=> nil
+
+puts appends a new line to the argument passed in, whereas print keeps things all on one line. 
+A very important thing to notice for both commands is that after printing whatever argument they are passed, puts and print both return nil.
