@@ -420,3 +420,18 @@ A for loop is used to iterate through a collection of information such as an arr
 
 
 
+
+
+the TIMES LOOP
+
+  5.times do
+     puts "Hello, world!"
+   end
+
+   
+5.times do |number|
+ puts "Alternative fact number #{number}"
+end
+
+If you need to run a loop for a specified number of times, then look no further than the trusty #times loop. 
+
