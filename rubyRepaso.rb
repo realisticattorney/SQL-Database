@@ -535,3 +535,48 @@ array methods (over 150, here just a few)
 
 
 
+#########################################################################
+#########################################################################
+#########################################################################
+#########################################################################
+#########################################################################
+#########################################################################
+#########################################################################
+#########################################################################
+#########################################################################
+#########################################################################
+#########################################################################
+#########################################################################
+#########################################################################
+#########################################################################
+
+
+
+
+
+ITERATORS
+
+
+names = ['Bob', 'Joe', 'Steve', 'Janice', 'Susan', 'Helen']
+
+names.each { |name| puts name }
+
+
+Each time we iterate over the array, we need to assign the value of the element to a variable. In this example we have named the variable name and placed it in between two pipes |. After that, we write the logic that we want to use to operate on the variable, which represents the current array element. In this case it is simply printing to the screen using puts.
+
+A block is just some lines of code ready to be executed. When working with blocks there are two styles you need to be aware of. By convention, we use the curly braces ({}) when everything can be contained in one line.
+We use the words do and end when we are performing multi-line operations. Lets add some functionality to our previous program to try out this do/end stuff.
+
+  names = ['Bob', 'Joe', 'Steve', 'Janice', 'Susan', 'Helen']
+  x = 1
+  
+  names.each do |name|
+    puts "#{x}. #{name}"
+    x += 1
+  end
+
+
+  array = [10,20,30,40,50,60,70,80,90,100] 
+  array.each_index {|i| print "#{array[i]} "}
+
+
