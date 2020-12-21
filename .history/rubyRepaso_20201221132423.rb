@@ -676,3 +676,240 @@ shoes     #=> {"summer"=>"flip-flops", "winter"=>"boots", "fall"=>"sneakers"}
 REMOVING data
 shoes.delete("summer")    #=> "flip-flops"
 shoes                     #=> {"winter"=>"boots", "fall"=>"sneakers"}
+
+METHODS
+
+books = { 
+ "Infinite Jest" => "David Foster Wallace", 
+ "Into the Wild" => "Jon Krakauer" 
+}
+
+books.keys      #=> ["Infinite Jest", "Into the Wild"]
+books.values    #=> ["David Foster Wallace", "Jon Krakauer"]
+
+MERGING
+
+hash1 = { "a" => 100, "b" => 200 }
+hash2 = { "b" => 254, "c" => 300 }
+hash1.merge(hash2)      #=> { "a" => 100, "b" => 254, "c" => 300 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+BASIC ENUMERABLE
+METHODS
+
+
+friends = ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
+
+friends.select { |friend| friend != 'Brian' }
+#=> ["Sharon", "Leo", "Leila", "Arun"] #new array
+
+
+friends = ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
+friends.each { |friend| puts "Hello, " + friend }   # is a block, and the code inside this block is run for each element in your array. Because we have 5 friends in our array, this block will be run 5 times, once with each of the 5 elements.
+#Within the block, you’ll notice that we have |friend|, which is known as a block variable
+
+For multi-line blocks, the commonly accepted best practice is to change up the syntax to use do...end instead of {...}:
+my_array = [1, 2]
+
+my_array.each do |num|
+ num *= 2
+ puts "The new number is #{num}."
+end
+
+
+fruits = ["apple", "banana", "strawberry", "pineapple"]
+
+fruits.each_with_index { |fruit, index| puts fruit if index.even? }
+
+
+
+
+
+
+friends = ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
+shouting_at_friends = []
+
+friends.each { |friend| shouting_at_friends.push(friend.upcase) }
+#=> ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
+
+shouting_at_friends #=> ['SHARON', 'LEO', 'LEILA', 'BRIAN', 'ARUN']
+
+or just...
+
+
+friends = ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
+
+friends.map { |friend| friend.upcase }
+#=> `['SHARON', 'LEO', 'LEILA', 'BRIAN', 'ARUN']`
+
+
+
+
+REDUCE METHOD
+
+my_numbers = [5, 6, 7, 8]
+
+my_numbers.reduce { |sum, number| sum + number }
+#=> 26
+
+The first block variable in the reduce enumerable (sum in this example) is known as the accumulator. The result of each iteration is stored in the accumulator and then passed to the next iteration. 
+The accumulator is also the value that the #reduce method returns at the end of its work. By default, the initial value of the accumulator is the first element in the collection, so for each step of the iteration, we would have the following:
+
+Iteration 0: sum = 5 + 6 = 11
+Iteration 1: sum = 11 + 7 = 18
+Iteration 2: sum = 18 + 8 = 26
+
+
+We can also set a different initial value for the accumulator by directly passing in a value to the #reduce method.
+
+my_numbers = [5, 6, 7, 8]
+
+my_numbers.reduce(1000) { |sum, number| sum + number }
+#=> 1026
+
+
+
+votes = ["Bob's Dirty Burger Shack", "St. Mark's Bistro", "Bob's Dirty Burger Shack"]
+
+votes.reduce(Hash.new(0)) do |result, vote| #value of keys by default is 0. 
+  result[vote] += 1  # result will be the key, 
+  result
+end
+#=> {"Bob's Dirty Burger Shack"=>2, "St. Mark's Bistro"=>1}
+
+
+what happened here? first
+
+hundreds = Hash.new(100)
+hundreds["first"]         #=> 100
+hundreds["mine"]          #=> 100
+hundreds["yours"]         #=> 100
+
+hundreds = Hash.new(100)
+hundreds["new"]           #=> 100
+hundreds["new"] = 99
+hundreds["new"]           #=> 99
+
+
+Iteration 0:
+result = {}
+Remember, this hash already has default values of 0, 
+Iteration 1:
+The method runs result["Bob's Dirty Burger Shack"] += 1
+result = {“Bob’s Dirty Burger Shack” => 1}
+Iteration 2:
+The method runs result["St. Mark's Bistro"] += 1
+result = {“Bob’s Dirty Burger Shack” => 1, “St. Mark’s Bistro” => 1}
+Iteration 3:
+The method runs result["Bob's Dirty Burger Shack"] += 1
+result = {“Bob’s Dirty Burger Shack” => 2, “St. Mark’s Bistro” => 1}
+
+
+
+
+
+
+hashes again
+
+HASHES ARE ARRAYS WHERE THE INDEX INSTEAD OF BEING A INTEGER CAN BE AN STRING SYMBOL OR EVEN ANOTHER HASH? (NOT SURE ABOUT THE LAST ONE)
+
+grades = Hash.new(1) #this is a default value for keys of this hash
+puts grades["a_key"] # => 1
+
+
+
+
+grades = { "Jane Doe" => 10, "Jim Doe" => 6 }  #this has keys that are strings
+
+options = { font_size: 10, font_family: "Arial" } # this sintax is just for symbols, which are like any other variables name but they're stored in memory just once
+
+
+
+
+
+friends = ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
+
+invited_friends = friends.select { |friend| friend != 'Brian' }
+
+friends
+#=> ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
+
+invited_friends
+#=> ["Sharon", "Leo", "Leila", "Arun"]
+
+
+
+
+print invited_friends 
+
+#=> ["Sharon", "Leo", "Leila", "Arun"]
+
+
+puts invited_friends
+"Sharon" 
+"Leo"
+"Leila"
+"Arun"
+
+
+
+CREATING A METHOD
+
+def my_name
+  "Joe Smith"
+end
+
+puts my_name    #=> "Joe Smith"
+
+
+def greet(name)
+  "Hello, " + name + "!"
+end
+
+puts greet("John") #=> Hello, John!
+
+
+
+DEFAULT PARAMETERS
+
+def greet(name)
+  "Hello, " + name + "!"
+end
+
+puts greet("John") #=> Hello, John!
+
+
+
+
+What Methods Return
+An important detail that a programmer must learn is understanding what your methods return. Having a good understanding of what your methods are returning is an important part of debugging your code when things don’t behave as expected.
+
+How do we tell our methods what to return? Let’s revisit our my_name example method:
+
+def my_name
+  "Joe Smith"
+end
+
+puts my_name #=> "Joe Smith"
+Our my_name method returns “Joe Smith”. This may seem obvious because it’s the only thing inside the method. In most languages, however, such a method would not return anything because it does not have an explicit return statement, which is a statement that starts with the return keyword. The above example could just as easily be written with an explicit return:
+
+def my_name
+  return "Joe Smith"
+end
+
+puts my_name #=> "Joe Smith"
+Ruby is one of the few languages that offers implicit return for methods,
+
