@@ -184,4 +184,17 @@ puts vs return
 a = puts "stuff"
 puts a #returns nil
 
-'
+
+
+
+SCOPE
+
+
+arr = [1, 2, 3]
+
+for i in arr do
+  a = 5      # a is initialized here
+end
+
+puts a       # is it accessible here? 
+The answer is yes. The reason is because the for...do/end code did not create a new inner scope, since for is part of Ruby language and not a method invocation. When we use each, times and other method invocations, followed by {} or do/end, thats when a new block is created.
