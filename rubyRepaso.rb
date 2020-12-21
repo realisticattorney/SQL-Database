@@ -379,3 +379,28 @@ while x <= 10
 end
 
 
+
+
+the UNTIL LOOP
+
+i = 0
+until i >= 10 do
+  puts "i is #{i}"
+  i += 1
+end
+
+The until loop is the opposite of the while loop.
+
+until gets.chomp == "yes" do
+  puts "Will you go to prom with me?"
+end
+
+Much more readable!
+
+
+
+(1..5)      # inclusive range: 1, 2, 3, 4, 5
+(1...5)     # exclusive range: 1, 2, 3, 4
+
+# We can make ranges of letters, too!
+('a'..'d')  # a, b, c, d
