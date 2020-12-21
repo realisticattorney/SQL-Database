@@ -289,3 +289,20 @@ My name is ALEX! :)
 
 puts appends a new line to the argument passed in, whereas print keeps things all on one line. 
 A very important thing to notice for both commands is that after printing whatever argument they are passed, puts and print both return nil.
+
+
+
+
+
+gets
+
+irb(main):001:0> gets
+The Odin Project
+=> "The Odin Project\n"
+How about that? Let’s break this process down a bit.
+
+You’ll notice that, unlike puts and print, gets actually returns the user input instead of returning nil. This means that the input can be assigned to a variable for you to then use and manipulate and twist and turn and spit back out.
+
+
+'
+
