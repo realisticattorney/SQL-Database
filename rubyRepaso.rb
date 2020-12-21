@@ -142,3 +142,46 @@ if 1 # true, 'cause 1 is something
 end
 
 
+
+
+hashes
+
+
+A hash, sometimes referred to as a dictionary, is a set of key-value pairs. It is represented with curly braces { }. A key-value pair is an association where a key is assigned a specific value. A hash consists of a key, usually represented by a symbol, that points to a value (denoted using a =>) of any type of data. Let's make some hashes to get the feel of it. Type along!
+
+irb :001 > {:dog => 'barks'}
+=> {:dog => 'barks'}
+
+irb :001 > {:dog => 'barks', :cat => 'meows', :pig => 'oinks'}[:cat]
+=> "meows"
+
+You may have noticed, indirectly at this point, that every time you enter something into irb you see the => back, which is called a hash rocket (cool name, huh?), followed by whatever your Ruby expression returns. When you type something in at the irb prompt you are creating an expression. An expression is anything that can be evaluated, and pretty much everything you write in Ruby is an expression. An expression in Ruby always returns something, even if that's an error message or nil. We'll talk in more depth about return as we move on, but remember that Ruby expressions always return a value, even if that value is nil or an error.
+movies = { jaws: 1975,  #same as :jaws => 1975,
+           anchorman : 2004,
+           :man_of_steel => 2013,
+           :a_beautiful_mind => 2001,
+           :the_evil_dead => 1981 }
+
+puts movies[:jaws]
+puts movies[:anchorman]
+puts movies[:man_of_steel]
+puts movies[:a_beautiful_mind]
+puts movies[:the_evil_dead]
+
+
+
+
+
+
+puts vs return
+
+# When we call the puts method, we\'re telling Ruby to print something to the screen. However, puts does not return what is printed to the screen. Expressions do something, but they also return something. The value returned is not necessarily the action that was performed. Let\'s take a look in irb.
+
+   irb :001 > puts 'stuff'
+   stuff
+   => nil
+
+a = puts "stuff"
+puts a #returns nil
+
+'
