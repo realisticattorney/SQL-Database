@@ -306,3 +306,30 @@ You’ll notice that, unlike puts and print, gets actually returns the user inpu
 
 '
 
+
+
+LOOPS 
+
+
+the loop LOOP
+
+
+i = 0
+loop do
+ puts "i is #{i}"
+ i += 1
+ break if i == 10
+end
+
+
+i = 0
+loop do
+ i += 2
+ if i == 4
+   next        # skip rest of the code in this iteration
+ end
+ puts i
+ if i == 10
+   break
+ end
+end
