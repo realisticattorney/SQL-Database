@@ -449,3 +449,45 @@ You can use these methods to iterate from a starting number either up to or down
 
 
 
+
+
+
+ARRAYS
+
+
+
+
+Array.new               #=> []
+Array.new(3)            #=> [nil, nil, nil]
+Array.new(3, "Hello")   #=> ["Hello", "Hello", "Hello"]
+Array.new(3, Array.new) #=> [[], [], []]
+
+
+str_array = ["This", "is", "a", "small", "array"]
+
+str_array.first         #=> "This"
+str_array.first(2)      #=> ["This", "is"]
+str_array.last(2)       #=> ["small", "array"]
+
+
+num_array = [1, 2]
+
+num_array.push(3, 4)      #=> [1, 2, 3, 4]
+num_array << 5            #=> [1, 2, 3, 4, 5]
+num_array.pop             #=> 5
+num_array                 #=> [1, 2, 3, 4]
+
+
+num_array = [2, 3, 4]
+
+num_array.unshift(1)      #=> [1, 2, 3, 4]
+num_array.shift           #=> 1
+num_array                 #=> [2, 3, 4]
+
+
+num_array = [1, 2, 3, 4, 5, 6]
+
+num_array.pop(3)          #=> [4, 5, 6] #quita 4,5,6, lo que devuelve es el array num_array eh
+num_array.shift(2)        #=> [1, 2]
+num_array                 #=> [3]
+
