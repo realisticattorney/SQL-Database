@@ -120,26 +120,3 @@ Object.new.object_id  == Object.new.object_id  # => false
 
 
 
-
-
-nil
-
-nil.to_s      #=> ""
-In Ruby, nil represents “nothing”. Everything in Ruby has a return value. When a piece of code doesn’t have anything to return, it will return nil
-
-In programming, we need a way to express "nothing", and in Ruby, we do this through something called nil. A variable with a value of nil could be described as having 'nothing' or being 'completely empty', or even just simply 'not any specific type'. A situation where this may occur is where output is expected but none is returned, such as:
-irb :001 > puts "Hello, World!"
-Hello, World!
-=> nil
-The puts method prints out a string and returns nothing, so we see nil being returned after the string is displayed.
-
-irb :001 > "Hello, World".nil?
-=> false
-if nil   #false
-end
-
-if 1 # true, 'cause 1 is something
-end
-
-
-
