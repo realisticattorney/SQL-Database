@@ -194,3 +194,191 @@ SELECT name
 WHERE name LIKE '%o%a%i%u%e'
 AND name NOT LIKE '% %'
 
+
+
+#####
+####
+
+select from nobel
+
+1
+SELECT yr, subject, winner
+  FROM nobel
+ WHERE yr = 1950
+
+
+ 2
+ SELECT winner
+  FROM nobel
+ WHERE yr = 1962
+   AND subject = 'Literature'
+
+
+3
+select yr, subject from nobel where winner = 'Albert Einstein'
+
+
+4
+select winner from nobel where yr >= 2000 and subject = 'Peace'
+
+
+5
+select yr, subject, winner from nobel where subject = 'Literature'  and yr  between 1980 and 1989
+
+
+6
+SELECT * FROM nobel
+ WHERE winner IN ('Theodore Roosevelt',
+                  'Woodrow Wilson',
+                  'Jimmy Carter',
+'Barack Obama')
+
+
+7
+select winner from nobel where left(winner, 4) like '%John%'
+
+
+8
+select yr, subject, winner from nobel where subject = 'Physics' and yr = 1980 or subject = 'Chemistry' and yr = 1984
+
+
+9
+select yr, subject, winner from nobel where yr = 1980 and subject != 'Chemistry' and subject != 'Medicine' 
+
+10
+select yr, subject, winner from nobel where subject = 'Medicine' and yr < 1910 or subject = 'Literature' and yr >= 2004
+
+
+11
+select * from nobel where winner = 'Peter Grünberg'
+
+
+12
+select * from nobel where winner = 'Eugene O\'Neill'
+
+
+13
+select winner, yr, subject from nobel where left(winner, 3) = 'Sir' 
+
+
+14
+SELECT winner, subject
+  FROM nobel
+ WHERE yr=1984
+ ORDER BY subject IN('Physics','Chemistry'), subject, winner
+
+
+
+##########
+
+#########
+
+
+select within select
+
+
+1
+      SELECT name FROM world
+  WHERE population >
+     (SELECT population FROM world
+      WHERE name = 'Russia')
+
+2
+      SELECT name FROM world
+  WHERE gdp / population >
+     (SELECT gdp / population FROM world
+      WHERE name = 'United Kingdom') and continent = 'Europe'
+
+3
+      select name, continent from world where continent = (select continent from world where name = 'Argentina') or continent = (select continent from world where name = 'Australia') order by name
+
+
+ 4     select name, population from world where population > (select population from world where name = 'Canada') and population < (select population from world where name = 'Poland')
+
+
+  5    select name, concat(round((population / (select population from world where name = 'Germany') * 100),0),'%') from world where continent = 'Europe' 
+
+  
+  
+  
+  
+  
+6
+
+SELECT name
+  FROM world
+ WHERE gdp > ALL(SELECT gdp
+                           FROM world
+                          WHERE continent = 'Europe' and gdp > 0)
+
+7
+SELECT continent, name, area FROM world x
+  WHERE area >= ALL
+    (SELECT area FROM world y
+        WHERE y.continent=x.continent
+          AND area>0)
+
+8
+SELECT continent, name FROM world x
+  WHERE name <= ALL
+    (SELECT name FROM world y
+        WHERE x.continent=y.continent)
+
+
+      9          
+SELECT name,continent, population FROM world x
+WHERE population <= ALL
+  (SELECT name FROM world y
+      WHERE x.continent=y.continent and
+ population >= 25000000)
+
+10
+
+SELECT name, continent FROM world x
+  WHERE population / 3  > ALL
+   (SELECT population FROM world y
+        WHERE x.continent=y.continent and population > 0 and y.name != x.name)
+
+
+
+
+
+      
+
+
+SUM and COUNT
+1
+SELECT SUM(population)
+FROM world
+
+2
+select continent from world x where name < all (select name from world y where y.continent = x.continent and y.name != x.name)
+
+3
+select sum( gdp) from world where continent = 'Africa'
+
+4
+select count(name) from world where area >= 1000000
+
+5
+select sum (population) from world where name in  ('Estonia', 'Latvia', 'Lithuania')
+
+
+6
+SELECT continent, count(name)
+  FROM world
+ GROUP BY continent
+
+
+7
+ SELECT continent, count(name)
+  FROM world
+where population >= 10000000
+ GROUP BY continent
+
+
+8
+ SELECT continent
+  FROM world
+ GROUP BY continent
+having sum(population) >= 100000000
