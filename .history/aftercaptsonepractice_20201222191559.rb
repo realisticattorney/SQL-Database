@@ -298,3 +298,87 @@ select within select
 
   5    select name, concat(round((population / (select population from world where name = 'Germany') * 100),0),'%') from world where continent = 'Europe' 
 
+  
+  
+  
+  
+  
+6
+
+SELECT name
+  FROM world
+ WHERE gdp > ALL(SELECT gdp
+                           FROM world
+                          WHERE continent = 'Europe' and gdp > 0)
+
+7
+SELECT continent, name, area FROM world x
+  WHERE area >= ALL
+    (SELECT area FROM world y
+        WHERE y.continent=x.continent
+          AND area>0)
+
+8
+SELECT continent, name FROM world x
+  WHERE name <= ALL
+    (SELECT name FROM world y
+        WHERE x.continent=y.continent)
+
+
+      9          
+SELECT name,continent, population FROM world x
+WHERE population <= ALL
+  (SELECT name FROM world y
+      WHERE x.continent=y.continent and
+ population >= 25000000)
+
+10
+
+SELECT name, continent FROM world x
+  WHERE population / 3  > ALL
+   (SELECT population FROM world y
+        WHERE x.continent=y.continent and population > 0 and y.name != x.name)
+
+
+
+
+
+      
+
+
+SUM and COUNT
+1
+SELECT SUM(population)
+FROM world
+
+2
+select continent from world x where name < all (select name from world y where y.continent = x.continent and y.name != x.name)
+
+3
+select sum( gdp) from world where continent = 'Africa'
+
+4
+select count(name) from world where area >= 1000000
+
+5
+select sum (population) from world where name in  ('Estonia', 'Latvia', 'Lithuania')
+
+
+6
+SELECT continent, count(name)
+  FROM world
+ GROUP BY continent
+
+
+7
+ SELECT continent, count(name)
+  FROM world
+where population >= 10000000
+ GROUP BY continent
+
+
+8
+ SELECT continent
+  FROM world
+ GROUP BY continent
+having sum(population) >= 100000000
