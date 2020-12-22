@@ -364,4 +364,25 @@ select within select
                   
                   5
                   select sum (population) from world where name in  ('Estonia', 'Latvia', 'Lithuania')
-             
+                  
+                  
+                  6
+                  SELECT continent, count(name)
+                    FROM world
+                   GROUP BY continent
+                  
+                  
+                  7
+                   SELECT continent, count(name)
+                    FROM world
+                  where population >= 10000000
+                   GROUP BY continent
+                  
+                  
+                  8
+                   SELECT continent
+                    FROM world
+                   GROUP BY continent
+                  having sum(population) >= 100000000
+                  
+                  
