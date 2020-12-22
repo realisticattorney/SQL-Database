@@ -317,18 +317,3 @@ select within select
       (SELECT area FROM world y
           WHERE y.continent=x.continent
             AND area>0)
-  
-  8
-  SELECT continent, name FROM world x
-    WHERE name <= ALL
-      (SELECT name FROM world y
-          WHERE x.continent=y.continent)
-  
-  
-          9          
-          SELECT name,continent, population FROM world x
-          WHERE population <= ALL
-            (SELECT name FROM world y
-                WHERE x.continent=y.continent and
-           population >= 25000000)
-   

@@ -325,10 +325,3 @@ select within select
           WHERE x.continent=y.continent)
   
   
-          9          
-          SELECT name,continent, population FROM world x
-          WHERE population <= ALL
-            (SELECT name FROM world y
-                WHERE x.continent=y.continent and
-           population >= 25000000)
-   
