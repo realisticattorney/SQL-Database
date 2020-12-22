@@ -1070,7 +1070,7 @@ p vs puts
 Using puts is a great way to debug, but there’s a HUGE caveat with using it: calling puts on anything that is nil or an empty string or collection will just print a blank line to your terminal.
 
 This is one instance where using p will yield more information. As mentioned above, p is a combination of puts and #inspect, the latter of which essentially prints a string representation of whatever it’s called on.
-Using p is equivalent to saying puts variable.inspect,
+
 
 
 
@@ -1093,10 +1093,10 @@ Running this code will give you the following error:
 
 
 /tmp/stack.rb:6 #	File and line number
-in 'method2' #	Method name
-undefined local variable or method ‘invalid_variable‘	 #Error message
-main:Object	# Class name
-(NameError)	# Exception name
+in 'method2‘ #	Method name
+undefined local variable or method ‘invalid_variable‘	Error message
+main:Object	Class name
+(NameError)	Exception name
 
 
 

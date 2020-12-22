@@ -897,30 +897,6 @@ puts greet("John") #=> Hello, John!
 
 
 
-def check_in(word)
-  if /lab/ =~ word
-    puts word
-  else
-    puts "No match"
-  end
-end
-
-
-check_in("laboratory")
-check_in("experiment")
-check_in("Pans Labyrinth")
-check_in("elaborate")
-check_in("polar bear")
-
-
-
-
-
-
-
-
-
-
 DEFAULT PARAMETERS
 
 def greet(name)
@@ -1033,11 +1009,6 @@ puts 12.between?(10, 15)  #=> true
 
 DEBUGGING
 
-stack trace : error report
-
-
-
-
 
 def double_words_in_phrase(string)
   string_array = string.split(' ')
@@ -1051,57 +1022,4 @@ double_words_in_phrase("This is a test")
 
 #this didn't work. map crates a new array. 
 #but if we put a bang to map    map!
-
-
-
-def double_words_in_phrase(string)
-  string_array = string.split(' ')
-  string_array.map! { |word| word * 2 }
-  string_array.join(' ')
-end
-
-p double_words_in_phrase("This is a test")
-
-#"ThisThis isis aa testtest"
-
-
-p vs puts
-
-Using puts is a great way to debug, but there’s a HUGE caveat with using it: calling puts on anything that is nil or an empty string or collection will just print a blank line to your terminal.
-
-This is one instance where using p will yield more information. As mentioned above, p is a combination of puts and #inspect, the latter of which essentially prints a string representation of whatever it’s called on.
-Using p is equivalent to saying puts variable.inspect,
-
-
-
-EXAMPLE OF ERROR sintax
-
-def method1
-  method2
-end
-def method2
-  puts invalid_variable
-end
-method1
-
-Running this code will give you the following error:
-
-/tmp/stack.rb:6:in 'method2': undefined local variable or method 'invalid_variable' for main:Object (NameError)
-    from /tmp/stack.rb:2:in 'method1'
-    from /tmp/stack.rb:9:in '<main>'
-</main>
-
-
-/tmp/stack.rb:6 #	File and line number
-in 'method2' #	Method name
-undefined local variable or method ‘invalid_variable‘	 #Error message
-main:Object	# Class name
-(NameError)	# Exception name
-
-
-
-
-
-
-
 

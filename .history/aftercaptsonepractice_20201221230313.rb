@@ -129,3 +129,16 @@ SELECT name, area FROM world
 
 
 
+
+
+
+
+  #############
+  ###########
+  ##############
+  SELECT from WORLD Tutorial
+
+
+  1
+  SELECT name, continent, population FROM world
+

@@ -129,3 +129,196 @@ SELECT name, area FROM world
 
 
 
+
+
+
+
+  #############
+  ###########
+  ##############
+  SELECT from WORLD Tutorial
+
+
+  1
+  SELECT name, continent, population FROM world
+
+  2
+  SELECT name
+  FROM world
+ WHERE population > 200000000
+
+3
+SELECT name, gdp / population FROM world WHERE population > 200000000
+
+4
+SELECT name, population / 1000000 FROM world WHERE continent = 'South America'
+
+5
+SELECT name, population FROM world WHERE name IN ( 'France', 'Germany','Italy')
+
+
+6
+SELECT name FROM world WHERE name LIKE '%United%'
+
+7
+SELECT  name, population, area FROM world WHERE area > 3000000 or population > 250000000
+
+8
+
+SELECT name, population, area FROM world WHERE area > 3000000 xor population > 250000000
+
+
+9
+SELECT name, round(population / 1000000, 2), round(gdp / 1000000000, 2) from world where continent = 'South America'
+
+
+
+
+10
+SELECT name, round(gdp / population, -3) from world where gdp >= 1000000000000
+
+11
+select name, capital from world where length(name) = length(capital)
+
+
+
+12
+
+select name, capital from world where left(name, 1) = left(capital, 1) and name = capital
+
+
+
+13
+SELECT name
+   FROM world
+WHERE name LIKE '%o%a%i%u%e'
+AND name NOT LIKE '% %'
+
+
+
+#####
+####
+
+select from nobel
+
+1
+SELECT yr, subject, winner
+  FROM nobel
+ WHERE yr = 1950
+
+
+ 2
+ SELECT winner
+  FROM nobel
+ WHERE yr = 1962
+   AND subject = 'Literature'
+
+
+3
+select yr, subject from nobel where winner = 'Albert Einstein'
+
+
+4
+select winner from nobel where yr >= 2000 and subject = 'Peace'
+
+
+5
+select yr, subject, winner from nobel where subject = 'Literature'  and yr  between 1980 and 1989
+
+
+6
+SELECT * FROM nobel
+ WHERE winner IN ('Theodore Roosevelt',
+                  'Woodrow Wilson',
+                  'Jimmy Carter',
+'Barack Obama')
+
+
+7
+select winner from nobel where left(winner, 4) like '%John%'
+
+
+8
+select yr, subject, winner from nobel where subject = 'Physics' and yr = 1980 or subject = 'Chemistry' and yr = 1984
+
+
+9
+select yr, subject, winner from nobel where yr = 1980 and subject != 'Chemistry' and subject != 'Medicine' 
+
+10
+select yr, subject, winner from nobel where subject = 'Medicine' and yr < 1910 or subject = 'Literature' and yr >= 2004
+
+
+11
+select * from nobel where winner = 'Peter Grünberg'
+
+
+12
+select * from nobel where winner = 'Eugene O\'Neill'
+
+
+13
+select winner, yr, subject from nobel where left(winner, 3) = 'Sir' 
+
+
+14
+SELECT winner, subject
+  FROM nobel
+ WHERE yr=1984
+ ORDER BY subject IN('Physics','Chemistry'), subject, winner
+
+
+
+##########
+
+#########
+
+
+select within select
+
+SELECT name FROM world
+  WHERE population >
+     (SELECT population FROM world
+      WHERE name = 'Russia')
+
+
+
+
+      SELECT name FROM world
+  WHERE population >
+     (SELECT population FROM world
+      WHERE name = 'Russia')
+
+
+      SELECT name FROM world
+  WHERE gdp / population >
+     (SELECT gdp / population FROM world
+      WHERE name = 'United Kingdom') and continent = 'Europe'
+
+
+      select name, continent from world where continent = (select continent from world where name = 'Argentina') or continent = (select continent from world where name = 'Australia') order by name
+
+
+      select name, population from world where population > (select population from world where name = 'Canada') and population < (select population from world where name = 'Poland')
+
+
+      select name, concat(round((population / (select population from world where name = 'Germany') * 100),0),'%') from world where continent = 'Europe' 
+
+
+      SELECT name
+  FROM world
+ WHERE gdp > ALL(SELECT gdp
+                           FROM world
+                          WHERE continent = 'Europe' and gdp > 0)
+
+
+
+                          SELECT continent, name, area FROM world x
+  WHERE area >= ALL
+    (SELECT area FROM world y
+        WHERE y.continent=x.continent
+          AND area>0)
+
+
+
+          
