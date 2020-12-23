@@ -543,7 +543,7 @@ select title, count(actorid) from actor, casting, movie where movieid=movie.id a
 
 
 15
-select distinct name from actor, movie, casting  where  movieid = movie.id and  actorid = actor.id  and movie.id = any (select movieid from casting join actor on id =actorid where actor.name = 'Art Garfunkel') and actor.name != 'Art Garfunkel'
+
 
 
 
@@ -696,17 +696,30 @@ FROM route a JOIN route b ON
 WHERE stopa.name='Craiglockhart' 
 
 
-10
-SELECT  a.num, a.company, stopb.name, d.num, d.company
+
+
+
+SELECT distinct a.num, a.company,  stopb.name, b.num, b.company
 FROM route a  JOIN route b ON
   (a.company=b.company AND a.num=b.num)
-   JOIN route c ON (b.stop = c.stop)
-   JOIN route d ON (d.company = c.company AND c.num = d.num)
-   JOIN stops stopa ON (a.stop=stopa.id)
-   JOIN stops stopb ON (b.stop=stopb.id)
-   JOIN stops stopc ON (c.stop = stopc.id)
-   JOIN stops stopd ON (d.stop = stopd.id)
-WHERE stopa.name = 'Craiglockhart' AND stopd.name = 'Lochend'
- ORDER BY a.company, a.num, stopb.name, d.num
+  
+  JOIN stops stopa ON (a.stop=stopa.id)
+  JOIN stops stopb ON (b.stop=stopb.id)
+WHERE stopa.name='Craiglockhart' or  stopb.name='Lochend'
 
 
+SELECT distinct  a.num,a.company, stopb.name,  second.num, second.company
+FROM route a JOIN route b ON
+  (a.company=b.company AND a.num=b.num)
+  JOIN stops stopa ON (a.stop=stopa.id)
+  JOIN stops stopb ON (b.stop=stopb.id)
+  JOIN 
+(
+SELECT distinct  stopaa.name, aa.num, aa.company
+FROM route aa JOIN route bb ON
+  (aa.company=bb.company AND aa.num=bb.num)
+  JOIN stops stopaa ON (aa.stop=stopaa.id)
+  JOIN stops stopbb ON (bb.stop=stopbb.id)
+  where stopbb.name ='Lochend'
+) second on stopb.name = second.name
+WHERE stopa.name='Craiglockhart'

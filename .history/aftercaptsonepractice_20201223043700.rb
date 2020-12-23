@@ -543,7 +543,7 @@ select title, count(actorid) from actor, casting, movie where movieid=movie.id a
 
 
 15
-select distinct name from actor, movie, casting  where  movieid = movie.id and  actorid = actor.id  and movie.id = any (select movieid from casting join actor on id =actorid where actor.name = 'Art Garfunkel') and actor.name != 'Art Garfunkel'
+
 
 
 
@@ -697,16 +697,40 @@ WHERE stopa.name='Craiglockhart'
 
 
 10
-SELECT  a.num, a.company, stopb.name, d.num, d.company
-FROM route a  JOIN route b ON
-  (a.company=b.company AND a.num=b.num)
-   JOIN route c ON (b.stop = c.stop)
-   JOIN route d ON (d.company = c.company AND c.num = d.num)
-   JOIN stops stopa ON (a.stop=stopa.id)
-   JOIN stops stopb ON (b.stop=stopb.id)
-   JOIN stops stopc ON (c.stop = stopc.id)
-   JOIN stops stopd ON (d.stop = stopd.id)
-WHERE stopa.name = 'Craiglockhart' AND stopd.name = 'Lochend'
- ORDER BY a.company, a.num, stopb.name, d.num
 
-
+27	LRT	Canonmills	34	LRT
+27	LRT	Canonmills	35	LRT
+47	LRT	Canonmills	34	LRT
+47	LRT	Canonmills	35	LRT
+27	LRT	Crewe Toll	20	LRT
+45	LRT	Duddingston	42	LRT
+45	LRT	Duddingston	46A	LRT
+4	LRT	Haymarket	65	LRT
+4	LRT	Haymarket	C5	SMT
+10	LRT	Leith	34	LRT
+10	LRT	Leith	35	LRT
+10	LRT	Leith	87	LRT
+10	LRT	Leith	C5	SMT
+4	LRT	London Road	20	LRT
+4	LRT	London Road	34	LRT
+4	LRT	London Road	35	LRT
+4	LRT	London Road	42	LRT
+4	LRT	London Road	46A	LRT
+4	LRT	London Road	65	LRT
+4	LRT	London Road	87	LRT
+4	LRT	London Road	87A	LRT
+4	LRT	London Road	C5	SMT
+45	LRT	London Road	20	LRT
+45	LRT	London Road	34	LRT
+45	LRT	London Road	35	LRT
+45	LRT	London Road	42	LRT
+45	LRT	London Road	46A	LRT
+45	LRT	London Road	65	LRT
+45	LRT	London Road	87	LRT
+45	LRT	London Road	87A	LRT
+45	LRT	London Road	C5	SMT
+10	LRT	Princes Street	65	LRT
+10	LRT	Princes Street	C5	SMT
+4	LRT	Princes Street	65	LRT
+4	LRT	Princes Street	C5	SMT
+45	LRT	Riccarton Campus	65	LRT

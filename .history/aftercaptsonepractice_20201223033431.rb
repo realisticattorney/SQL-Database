@@ -543,7 +543,7 @@ select title, count(actorid) from actor, casting, movie where movieid=movie.id a
 
 
 15
-select distinct name from actor, movie, casting  where  movieid = movie.id and  actorid = actor.id  and movie.id = any (select movieid from casting join actor on id =actorid where actor.name = 'Art Garfunkel') and actor.name != 'Art Garfunkel'
+
 
 
 
@@ -640,73 +640,5 @@ select count(id) from stops
 2
 select id from stops where name = 'Craiglockhart'
 
-3
-select  id, name from stops join route on id = stop  and company = 'LRT'  and num = '4'
-
-
-4
-SELECT company, num, COUNT(*)
-FROM route WHERE stop=149 OR stop=53
-GROUP BY company, num
-having count(stop) = 2
-
-
-5
-
-SELECT a.company, a.num, a.stop, b.stop
-FROM route a JOIN route b ON
-  (a.company=b.company AND a.num=b.num)
-WHERE a.stop=53 and b.stop=149
-
-6
-
-SELECT a.company, a.num, stopa.name, stopb.name
-FROM route a JOIN route b ON
-  (a.company=b.company AND a.num=b.num)
-  JOIN stops stopa ON (a.stop=stopa.id)
-  JOIN stops stopb ON (b.stop=stopb.id)
-WHERE stopa.name='Craiglockhart' and stopb.name ='London Road' 
-
-
-7
-
-SELECT distinct a.company, a.num
-FROM route a JOIN route b ON
-  (a.company=b.company AND a.num=b.num)
-  JOIN stops stopa ON (a.stop=stopa.id)
-  JOIN stops stopb ON (b.stop=stopb.id)
-WHERE stopa.name='Haymarket' and stopb.name ='Leith' 
-
-8
-
-SELECT distinct a.company, a.num
-FROM route a JOIN route b ON
-  (a.company=b.company AND a.num=b.num)
-  JOIN stops stopa ON (a.stop=stopa.id)
-  JOIN stops stopb ON (b.stop=stopb.id)
-WHERE stopa.name='Craiglockhart' and stopb.name ='Tollcross' 
-
-9
-
-SELECT stopb.name, a.company, a.num
-FROM route a JOIN route b ON
-  (a.company=b.company AND a.num=b.num)
-  JOIN stops stopa ON (a.stop=stopa.id)
-  JOIN stops stopb ON (b.stop=stopb.id)
-WHERE stopa.name='Craiglockhart' 
-
-
-10
-SELECT  a.num, a.company, stopb.name, d.num, d.company
-FROM route a  JOIN route b ON
-  (a.company=b.company AND a.num=b.num)
-   JOIN route c ON (b.stop = c.stop)
-   JOIN route d ON (d.company = c.company AND c.num = d.num)
-   JOIN stops stopa ON (a.stop=stopa.id)
-   JOIN stops stopb ON (b.stop=stopb.id)
-   JOIN stops stopc ON (c.stop = stopc.id)
-   JOIN stops stopd ON (d.stop = stopd.id)
-WHERE stopa.name = 'Craiglockhart' AND stopd.name = 'Lochend'
- ORDER BY a.company, a.num, stopb.name, d.num
 
 

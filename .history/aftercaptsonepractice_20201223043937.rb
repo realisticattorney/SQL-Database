@@ -543,7 +543,7 @@ select title, count(actorid) from actor, casting, movie where movieid=movie.id a
 
 
 15
-select distinct name from actor, movie, casting  where  movieid = movie.id and  actorid = actor.id  and movie.id = any (select movieid from casting join actor on id =actorid where actor.name = 'Art Garfunkel') and actor.name != 'Art Garfunkel'
+
 
 
 
@@ -707,6 +707,14 @@ FROM route a  JOIN route b ON
    JOIN stops stopc ON (c.stop = stopc.id)
    JOIN stops stopd ON (d.stop = stopd.id)
 WHERE stopa.name = 'Craiglockhart' AND stopd.name = 'Lochend'
- ORDER BY a.company, a.num, stopb.name, d.num
+order by a.num
 
+
+
+SELECT DISTINCT bus1.num, bus1.company, transfer.name, bus2.num, bus2.company
+ FROM route bus1 JOIN route midA ON (bus1.num = midA.num AND bus1.company = midA.company)
+                 JOIN route midD ON (midA.stop = midD.stop)
+                 JOIN route bus2 ON (midD.num = bus2.num AND midD.company= bus2.company)
+                 JOIN stops transfer ON (midA.stop = transfer.id)
+ WHERE bus1.stop = 53 AND bus2.stop = 147
 
