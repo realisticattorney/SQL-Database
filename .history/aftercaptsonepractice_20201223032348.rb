@@ -580,3 +580,26 @@ SELECT teacher.name, dept.name
             FROM teacher right JOIN dept ON dept = dept.id 
            
            
+            5
+           
+           SELECT  name mobile
+                 ,COALESCE(mobile, '07986 444 2266')
+             FROM teacher
+           
+           
+           
+             6
+           
+             SELECT  teacher.name
+                 ,COALESCE(dept.name, 'None')
+             FROM teacher left join dept on teacher.dept = dept.id 
+           
+           
+           7
+           select count(name), count (mobile) from teacher
+           
+           
+           8
+           select dept.name, count(teacher.name) from teacher right join dept on teacher.dept = dept.id group by dept.name
+           
+           
