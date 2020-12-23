@@ -595,3 +595,11 @@ SELECT teacher.name, dept.name
              FROM teacher left join dept on teacher.dept = dept.id 
            
            
+           7
+           select count(name), count (mobile) from teacher
+           
+           
+           8
+           select dept.name, count(teacher.name) from teacher right join dept on teacher.dept = dept.id group by dept.name
+           
+           
