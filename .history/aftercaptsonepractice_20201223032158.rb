@@ -520,3 +520,81 @@ SELECT yr,COUNT(title) FROM
 WHERE name='Rock Hudson'
 GROUP BY yr
 HAVING COUNT(title) > 2
+
+
+12
+
+select title, name from movie, casting, actor where movieid=movie.id and actorid=actor.id and ord=1
+  and movieid in
+  (select movieid from casting, actor
+   where actorid=actor.id
+   and name='Julie Andrews')
+
+
+
+13
+select distinct name from actor, casting, movie where movieid=movie.id and actorid=actor.id and ord=1   group by name
+having count(actorid)>=15  
+
+14
+select title, count(actorid) from actor, casting, movie where movieid=movie.id and actorid=actor.id and yr = 1978   group by title desc order by count(actorid) desc
+
+
+15
+
+
+
+
+
+#######
+
+#######
+
+#
+#####
+
+
+null 
+
+1
+SELECT name FROM teacher
+  WHERE dept IS NULL
+
+2
+SELECT teacher.name, dept.name
+ FROM teacher INNER JOIN dept
+           ON (teacher.dept=dept.id)
+
+
+3
+SELECT DISTINCT teacher.name, dept.name
+ FROM teacher left JOIN dept ON dept = dept.id 
+
+
+4
+SELECT DISTINCT teacher.name, dept.name
+ FROM teacher right JOIN dept ON dept = dept.id 
+
+
+ 5
+
+SELECT  name mobile
+      ,COALESCE(mobile, '07986 444 2266')
+  FROM teacher
+
+
+
+  6
+
+  SELECT  teacher.name
+      ,COALESCE(dept.name, 'None')
+  FROM teacher left join dept on teacher.dept = dept.id 
+
+
+7
+select count(name), count (mobile) from teacher
+
+
+8
+select dept.name, count(teacher.name) from teacher right join dept on teacher.dept = dept.id group by dept.name
+
