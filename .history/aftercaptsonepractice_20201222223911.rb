@@ -458,3 +458,13 @@ SELECT matchid,mdate, count(teamid)
   FROM game LEFT JOIN goal ON matchid = id 
 GROUP BY mdate,matchid,team1,team2
 
+
+#####
+
+more join 
+
+1
+select id, title, yr from movie where title like ('%Star Trek%') order by yr
+
+
+2

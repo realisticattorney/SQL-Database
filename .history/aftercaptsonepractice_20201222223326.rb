@@ -458,3 +458,4 @@ SELECT matchid,mdate, count(teamid)
   FROM game LEFT JOIN goal ON matchid = id 
 GROUP BY mdate,matchid,team1,team2
 
+

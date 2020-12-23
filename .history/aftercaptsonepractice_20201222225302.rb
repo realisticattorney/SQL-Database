@@ -458,3 +458,32 @@ SELECT matchid,mdate, count(teamid)
   FROM game LEFT JOIN goal ON matchid = id 
 GROUP BY mdate,matchid,team1,team2
 
+
+#####
+
+more join 
+
+1SELECT id, title
+FROM movie
+WHERE yr=1962
+select id, title, yr from movie where title like ('%Star Trek%') order by yr
+
+
+2
+select yr from movie where title = 'Citizen Kane'
+
+3
+
+
+7
+
+select name from casting, actor
+where movieid=(
+select id from movie 
+where title='Alien') and actorid=actor.id
+
+
+
+
+8
+select title from movie join casting on id = movieid where actorid = any (select id from actor where name = 'Harrison Ford')
